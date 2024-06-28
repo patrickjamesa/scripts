@@ -1,0 +1,41 @@
+cdm() #@ select new directory from a menu of those already visited
+
+              
+{
+
+              
+  local dir IFS=$'\n' item
+
+              
+  for dir in $(dirs -l -p)             ## loop through directories in DIRSTACK[@]
+
+              
+  do
+
+              
+    [ "$dir" = "$PWD" ] && continue    ## skip current directory
+
+              
+    case ${item[*]} in
+
+              
+      *"$dir:"*) ;;                    		## $dir already in array; do nothing
+
+              
+      *) item+=( "$dir:cd '$dir'" ) ;; 		## add $dir to array
+
+              
+    esac
+
+              
+  done
+
+              
+  menu "${item[@]}" Quit:              ## pass array to menu function
+
+              
+}
+
+            
+
+ 

@@ -1,0 +1,12 @@
+pd ()
+
+              
+{
+
+              
+    popd
+
+              
+} >/dev/null ### for the same reason as cd
+
+            
